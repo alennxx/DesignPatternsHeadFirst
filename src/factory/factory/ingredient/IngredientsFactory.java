@@ -1,7 +1,5 @@
 package factory.factory.ingredient;
 
-import factory.pizza.Pepperoni;
-import factory.pizza.ingredient.*;
 import factory.pizza.ingredient.cheese.Cheese;
 import factory.pizza.ingredient.dough.Dough;
 import factory.pizza.ingredient.sauce.Sauce;
