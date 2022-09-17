@@ -1,7 +1,9 @@
 package command.model;
 
-public class Lighting {
-    public void turnOn() {
-        System.out.println("Lighting is turned on");
+public class Lighting extends Appliance {
+
+    public Lighting(String room) {
+        super("Lighting in " + room);
     }
+
 }

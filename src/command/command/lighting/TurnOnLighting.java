@@ -1,12 +1,12 @@
-package command.command;
+package command.command.lighting;
 
+import command.command.Command;
 import command.model.Lighting;
 
-public class TurnOnLighting implements Command {
-    private final Lighting lighting;
+public class TurnOnLighting extends LightingCommand {
 
     public TurnOnLighting(Lighting lighting) {
-        this.lighting = lighting;
+        super(lighting);
     }
 
     @Override

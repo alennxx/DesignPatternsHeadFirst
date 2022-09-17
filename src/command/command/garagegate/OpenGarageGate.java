@@ -1,17 +1,17 @@
-package command.command;
+package command.command.garagegate;
 
+import command.command.Command;
 import command.model.GarageGate;
 
-public class OpenGarageGate implements Command {
-
-    private GarageGate garageGate;
+public class OpenGarageGate extends GarageGateCommand {
 
     public OpenGarageGate(GarageGate garageGate) {
-        this.garageGate = garageGate;
+        super(garageGate);
     }
 
     @Override
     public void execute() {
         garageGate.open();
     }
+
 }
