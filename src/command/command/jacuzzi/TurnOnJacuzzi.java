@@ -1,13 +1,12 @@
-package command.command.lighting;
+package command.command.jacuzzi;
 
 import command.command.AbstractCommand;
 import command.command.Command;
-import command.model.Lighting;
+import command.model.Jacuzzi;
 
-public class TurnOnLighting extends AbstractCommand<Lighting> {
-
-    public TurnOnLighting(Lighting lighting) {
-        super(lighting);
+public class TurnOnJacuzzi extends AbstractCommand<Jacuzzi> {
+    public TurnOnJacuzzi(Jacuzzi appliance) {
+        super(appliance);
     }
 
     @Override
@@ -19,5 +18,4 @@ public class TurnOnLighting extends AbstractCommand<Lighting> {
     public void undo() {
         appliance.turnOff();
     }
-
 }

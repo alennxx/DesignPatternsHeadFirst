@@ -1,5 +1,6 @@
 package command.command.ceilingfan;
 
+import command.command.Command;
 import command.model.CeilingFan;
 
 public class TurnOffCeilingFan extends CeilingFanCommand {
@@ -9,8 +10,8 @@ public class TurnOffCeilingFan extends CeilingFanCommand {
     }
 
     @Override
-    public void execute() {
-        ceilingFan.turnOff();
+    protected CeilingFan.Mode getCeilingFanMode() {
+        return CeilingFan.Mode.TURNED_OFF;
     }
 
 }

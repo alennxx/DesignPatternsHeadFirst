@@ -1,13 +1,12 @@
-package command.command.stereo;
+package command.command.jacuzzi;
 
 import command.command.AbstractCommand;
 import command.command.Command;
-import command.model.Stereo;
+import command.model.Jacuzzi;
 
-public class TurnOffStereo extends AbstractCommand<Stereo> {
-
-    public TurnOffStereo(Stereo stereo) {
-        super(stereo);
+public class TurnOffJacuzzi extends AbstractCommand<Jacuzzi> {
+    public TurnOffJacuzzi(Jacuzzi appliance) {
+        super(appliance);
     }
 
     @Override
@@ -19,5 +18,4 @@ public class TurnOffStereo extends AbstractCommand<Stereo> {
     public void undo() {
         appliance.turnOn();
     }
-
 }

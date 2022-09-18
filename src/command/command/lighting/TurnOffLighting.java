@@ -1,9 +1,10 @@
 package command.command.lighting;
 
+import command.command.AbstractCommand;
 import command.command.Command;
 import command.model.Lighting;
 
-public class TurnOffLighting extends LightingCommand {
+public class TurnOffLighting extends AbstractCommand<Lighting> {
 
     public TurnOffLighting(Lighting lighting) {
         super(lighting);
@@ -11,7 +12,12 @@ public class TurnOffLighting extends LightingCommand {
 
     @Override
     public void execute() {
-        lighting.turnOff();
+        appliance.turnOff();
+    }
+
+    @Override
+    public void undo() {
+        appliance.turnOn();
     }
 
 }

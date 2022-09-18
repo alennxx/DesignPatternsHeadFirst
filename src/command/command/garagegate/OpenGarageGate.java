@@ -1,9 +1,10 @@
 package command.command.garagegate;
 
+import command.command.AbstractCommand;
 import command.command.Command;
 import command.model.GarageGate;
 
-public class OpenGarageGate extends GarageGateCommand {
+public class OpenGarageGate extends AbstractCommand<GarageGate> {
 
     public OpenGarageGate(GarageGate garageGate) {
         super(garageGate);
@@ -11,7 +12,12 @@ public class OpenGarageGate extends GarageGateCommand {
 
     @Override
     public void execute() {
-        garageGate.open();
+        appliance.open();
+    }
+
+    @Override
+    public void undo() {
+        appliance.close();
     }
 
 }

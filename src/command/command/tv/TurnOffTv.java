@@ -1,13 +1,13 @@
-package command.command.stereo;
+package command.command.tv;
 
 import command.command.AbstractCommand;
 import command.command.Command;
-import command.model.Stereo;
+import command.model.TV;
 
-public class TurnOffStereo extends AbstractCommand<Stereo> {
+public class TurnOffTv extends AbstractCommand<TV> {
 
-    public TurnOffStereo(Stereo stereo) {
-        super(stereo);
+    public TurnOffTv(TV tv) {
+        super(tv);
     }
 
     @Override
@@ -19,5 +19,4 @@ public class TurnOffStereo extends AbstractCommand<Stereo> {
     public void undo() {
         appliance.turnOn();
     }
-
 }

@@ -1,7 +1,26 @@
 package command.model;
 
-public class CeilingFan extends Appliance {
+public class CeilingFan {
+
+    private Mode mode;
+
     public CeilingFan() {
-        super("Ceiling Fan");
+        this.mode = Mode.TURNED_OFF;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
+        System.out.println("Ceiling fan mode is set to " + mode.toString());
+    }
+
+    public Mode getMode() {
+        return mode;
+    }
+
+    public enum Mode {
+        FAST,
+        STANDARD,
+        SLOW,
+        TURNED_OFF
     }
 }

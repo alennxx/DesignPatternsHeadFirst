@@ -1,13 +1,12 @@
-package command.command.lighting;
+package command.command.tv;
 
 import command.command.AbstractCommand;
 import command.command.Command;
-import command.model.Lighting;
+import command.model.TV;
 
-public class TurnOnLighting extends AbstractCommand<Lighting> {
-
-    public TurnOnLighting(Lighting lighting) {
-        super(lighting);
+public class TurnOnTv extends AbstractCommand<TV> {
+    public TurnOnTv(TV tv) {
+        super(tv);
     }
 
     @Override
@@ -19,5 +18,4 @@ public class TurnOnLighting extends AbstractCommand<Lighting> {
     public void undo() {
         appliance.turnOff();
     }
-
 }

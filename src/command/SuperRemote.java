@@ -8,6 +8,7 @@ public class SuperRemote {
     private final int numberOfSlots;
     private Command[] turnOnCommands;
     private Command[] turnOffCommands;
+    private Command undoCommand;
 
     public SuperRemote(int numberOfSlots) {
         this.numberOfSlots = numberOfSlots;
@@ -19,6 +20,7 @@ public class SuperRemote {
             turnOnCommands[i] = noCommand;
             turnOffCommands[i] = noCommand;
         }
+        undoCommand = noCommand;
     }
 
     public void setCommand(int slot, Command turnOnCommand, Command turnOffCommand) {
@@ -29,15 +31,15 @@ public class SuperRemote {
     }
 
     public void turnOnButtonPressed(int slot) {
-        if (slot < numberOfSlots) {
-            turnOnCommands[slot].execute();
-        }
+        buttonPressed(slot, turnOnCommands);
     }
 
     public void turnOffButtonPressed(int slot) {
-        if (slot < numberOfSlots) {
-            turnOffCommands[slot].execute();
-        }
+        buttonPressed(slot, turnOffCommands);
+    }
+
+    public void undoButtonPressed() {
+        undoCommand.undo();
     }
 
     public String toString() {
@@ -49,7 +51,16 @@ public class SuperRemote {
             sb.append(turnOffCommands[i].getClass().getSimpleName());
             sb.append("\n");
         }
+        sb.append("[undo]:\t\t");
+        sb.append(undoCommand.getClass().getSimpleName());
         return sb.toString();
+    }
+
+    private void buttonPressed(int slot, Command[] commands) {
+        if (slot >= 0 && slot < numberOfSlots) {
+            commands[slot].execute();
+            undoCommand = commands[slot];
+        }
     }
 
 }

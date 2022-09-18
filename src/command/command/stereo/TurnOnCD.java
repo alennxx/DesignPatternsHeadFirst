@@ -1,8 +1,10 @@
 package command.command.stereo;
 
+import command.command.AbstractCommand;
+import command.command.Command;
 import command.model.Stereo;
 
-public class TurnOnCD extends StereoCommand {
+public class TurnOnCD extends AbstractCommand<Stereo> {
 
     public TurnOnCD(Stereo stereo) {
         super(stereo);
@@ -10,8 +12,16 @@ public class TurnOnCD extends StereoCommand {
 
     @Override
     public void execute() {
-        stereo.turnOn();
-        stereo.setMode(Stereo.Mode.CD);
-        stereo.setVolume(51);
+        appliance.turnOn();
+        appliance.setMode(Stereo.Mode.CD);
+        appliance.setVolume(51);
     }
+
+    @Override
+    public void undo() {
+        appliance.turnOff();
+        appliance.setMode(Stereo.Mode.RADIO);
+        appliance.setVolume(50);
+    }
+
 }
