@@ -25,7 +25,6 @@ public class RemoteTest {
 //        miniRemoteTest();
 //        superRemoteTest();
         partyModeTest();
-        //253
     }
 
     private static void miniRemoteTest() {
