@@ -1,4 +1,4 @@
-package adapter;
+package adapter.duck;
 
 public class TestDuck {
 
@@ -19,8 +19,6 @@ public class TestDuck {
 
         System.out.println("Duck adapter:");
         testTurkey(duckAdapter);
-
-        //267
     }
 
     private static void testDuck(Duck duck) {

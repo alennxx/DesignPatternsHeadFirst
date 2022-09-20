@@ -1,4 +1,4 @@
-package adapter;
+package adapter.duck;
 
 public class WIldDuck implements Duck {
     @Override

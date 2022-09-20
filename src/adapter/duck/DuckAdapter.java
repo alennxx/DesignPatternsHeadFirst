@@ -1,4 +1,4 @@
-package adapter;
+package adapter.duck;
 
 import java.util.Random;
 
