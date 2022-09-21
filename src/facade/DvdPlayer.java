@@ -1,6 +1,13 @@
 package facade;
 
-public class DvdPlayer {
+public class DvdPlayer extends Player {
 
-    private boolean isTurnedOn;
+    public DvdPlayer() {
+        super("DVD Player");
+    }
+
+    public void play(String movie) {
+        System.out.println(movie + " is playing");
+    }
+
 }

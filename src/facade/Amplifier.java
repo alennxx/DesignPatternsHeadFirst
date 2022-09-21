@@ -1,30 +1,21 @@
 package facade;
 
-public class Amplifier {
+public class Amplifier extends Appliance {
 
-    public void turnOn() {
-        System.out.println("Amplifier is turned on");
-    }
-
-    public void turnOff() {
-        System.out.println("Amplifier is turned off");
+    public Amplifier() {
+        super("Amplifier");
     }
 
     public void setVolume(int volume) {
         System.out.println("Amplifier volume is set to " + volume);
     }
 
-    public void setPlayerMode(PlayerMode playerMode) {
-        System.out.println("Amplifier player mode is set to " + playerMode);
+    public void setInput(Player player) {
+        System.out.println("Amplifier -> Input is set");
     }
 
     public void setSoundMode(SoundMode soundMode) {
         System.out.println("Amplifier sound mode is set to " + soundMode);
-    }
-
-    public enum PlayerMode {
-        CD,
-        DVD
     }
 
     public enum SoundMode {
