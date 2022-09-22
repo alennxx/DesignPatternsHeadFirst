@@ -7,7 +7,6 @@ public class HomeCinema {
     public static void main(String[] args) {
         //playMovieWithoutFacade();
         playMovieWithFacade();
-        //279
     }
 
     private static void playMovieWithFacade() {
