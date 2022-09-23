@@ -1,4 +1,4 @@
-package templatemethod;
+package templatemethod.cafe;
 
 public class Cafe {
 
@@ -11,8 +11,6 @@ public class Cafe {
 
         Coffee cappuccino = new Coffee(Coffee.Type.CAPPUCCINO);
         cappuccino.make();
-
-        //318
     }
 
 }

@@ -1,4 +1,4 @@
-package templatemethod;
+package templatemethod.cafe;
 
 abstract class HotDrink {
 
