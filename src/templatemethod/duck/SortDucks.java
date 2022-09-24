@@ -13,8 +13,6 @@ public class SortDucks {
 
         System.out.println("After sorting:");
         displayDucks(ducks);
-
-        //335
     }
 
     private static Duck[] createDucks() {
