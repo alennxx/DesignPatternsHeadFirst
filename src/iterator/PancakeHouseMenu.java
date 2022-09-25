@@ -1,17 +1,20 @@
 package iterator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class PancakeHouseMenu {
-    private final ArrayList<MenuItem> menu;
+public final class PancakeHouseMenu implements Menu {
+    private final List<MenuItem> menu;
 
     public PancakeHouseMenu() {
         menu = new ArrayList<>();
         initializeMenuItems();
     }
 
-    public ArrayList<MenuItem> getMenu() {
-        return menu;
+    @Override
+    public Iterator<MenuItem> createIterator() {
+        return menu.iterator();
     }
 
     private void initializeMenuItems() {
