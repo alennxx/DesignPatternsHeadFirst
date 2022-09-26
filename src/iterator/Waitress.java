@@ -1,27 +1,23 @@
 package iterator;
 
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public final class Waitress {
 
-    private final Menu pancakeHouseMenu;
-    private final Menu dinerMenu;
+    private final List<Menu> menus;
 
-    public Waitress(Menu pancakeHouseMenu, Menu dinerMenu) {
-        this.pancakeHouseMenu = pancakeHouseMenu;
-        this.dinerMenu = dinerMenu;
+    public Waitress(Menu... menus) {
+        this.menus = Arrays.asList(menus);
     }
 
     public void printMenu() {
         System.out.println("MENU:");
 
-        Iterator<MenuItem> breakFastIterator = pancakeHouseMenu.createIterator();
-        System.out.println("Breakfast menu:");
-        printMenu(breakFastIterator);
-
-        Iterator<MenuItem> lunchIterator = dinerMenu.createIterator();
-        System.out.println("Lunch menu:");
-        printMenu(lunchIterator);
+        for (Menu menu : menus) {
+            printMenu(menu.createIterator());
+        }
     }
 
     public void printBreakfastMenu() {
