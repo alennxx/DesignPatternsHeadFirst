@@ -1,5 +1,7 @@
 package composite;
 
+import java.util.Iterator;
+
 abstract class MenuComponent {
 
     private final String name;
@@ -41,4 +43,6 @@ abstract class MenuComponent {
     MenuComponent getChild(int i) {
         throw new UnsupportedOperationException("get child");
     }
+
+    abstract Iterator<MenuComponent> createIterator();
 }

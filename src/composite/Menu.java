@@ -1,6 +1,7 @@
 package composite;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public final class Menu extends MenuComponent {
@@ -29,6 +30,7 @@ public final class Menu extends MenuComponent {
 
     @Override
     void print() {
+        // 'inner' iterator
         System.out.println();
         System.out.println(getName() + " -- " + getDescription());
         System.out.println("----------------------------------------------");
@@ -37,4 +39,8 @@ public final class Menu extends MenuComponent {
         }
     }
 
+    @Override
+    Iterator<MenuComponent> createIterator() {
+        return new CompositeIterator(menuComponents.iterator());
+    }
 }

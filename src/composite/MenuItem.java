@@ -1,5 +1,7 @@
 package composite;
 
+import java.util.Iterator;
+
 public final class MenuItem extends MenuComponent {
 
     private final boolean vegetarian;
@@ -23,10 +25,16 @@ public final class MenuItem extends MenuComponent {
 
     @Override
     void print() {
+        // 'inner' iterator
         System.out.print("\t");
         if (vegetarian) {
             System.out.print("(V) ");
         }
         System.out.println(getName() + ": " + price + " -- " + getDescription());
+    }
+
+    @Override
+    Iterator<MenuComponent> createIterator() {
+        return new EmptyIterator();
     }
 }
