@@ -15,8 +15,6 @@ public class Restaurant {
         Waitress waitress = new Waitress(restaurantMenu);
         //waitress.printMenu();
         waitress.printVegetarianMenu();
-
-        //403
     }
 
     private static MenuComponent createPancakeHouseMenu() {
