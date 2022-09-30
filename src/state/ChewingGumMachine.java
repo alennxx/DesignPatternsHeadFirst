@@ -2,80 +2,69 @@ package state;
 
 public class ChewingGumMachine {
 
-    private final static int NO_GUMS = 0;
-    private final static int NO_COIN = 1;
-    private final static int COIN_INSERTED = 2;
-    private final static int GUM_SOLD = 3;
+    private final State noGums;
+    private final State noCoin;
+    private final State coinInserted;
+    private final State gumSold;
 
-    private int state = NO_GUMS;
+    private State state;
     private int numberOfGums;
 
     public ChewingGumMachine(int numberOfGums) {
         this.numberOfGums = numberOfGums;
+        noGums = new NoGums(this);
+        noCoin = new NoCoin(this);
+        coinInserted = new CoinInserted(this);
+        gumSold = new GumSold(this);
         if (numberOfGums > 0) {
-            state = NO_COIN;
+            state = noCoin;
+        } else {
+            state = noGums;
         }
     }
 
-    public static void main(String[] args) {
-        ChewingGumMachine machine = new ChewingGumMachine(1);
-        System.out.println(machine);
-
-        //410
+    public void setState(State state) {
+        this.state = state;
     }
 
-    public void insertCoin() {
-        switch (state) {
-            case NO_GUMS -> System.out.println("You can't insert coin when machine is empty.");
-            case NO_COIN -> {
-                state = COIN_INSERTED;
-                System.out.println("Coin has been inserted.");
-            }
-            case COIN_INSERTED -> System.out.println("You can't insert more than one coin.");
-            case GUM_SOLD -> System.out.println("Please wait for your chewing gum.");
+    void insertCoin() {
+        state.insertCoin();
+    }
+
+    void returnCoin() {
+        state.returnCoin();
+    }
+
+    void turnTheKnob() {
+        state.turnTheKnob();
+        state.handOver();
+    }
+
+    void releaseGum() {
+        System.out.println("Chewing gum coming...");
+        if (numberOfGums != 0) {
+            numberOfGums--;
         }
     }
 
-    public void returnCoin() {
-        switch (state) {
-            case NO_GUMS ->
-                    System.out.println("No coin to return (when machine is empty it's impossible to insert a coin).");
-            case NO_COIN -> System.out.println("No coin to return.");
-            case COIN_INSERTED -> {
-                state = NO_COIN;
-                System.out.println("Coin has been returned.");
-            }
-            case GUM_SOLD -> System.out.println("Coin can't be returned (gum sold).");
-        }
+    public State getNoGums() {
+        return noGums;
     }
 
-    public void turnTheKnob() {
-        switch (state) {
-            case NO_GUMS -> System.out.println("Nothing happens (machine is empty).");
-            case NO_COIN -> System.out.println("First insert a coin.");
-            case COIN_INSERTED -> {
-                state = GUM_SOLD;
-                System.out.println("Chewing gum purchased.");
-                handOver();
-            }
-            case GUM_SOLD -> System.out.println("Nothing happens (chewing gum already purchased).");
-        }
+    public State getNoCoin() {
+        return noCoin;
     }
 
-    public void handOver() {
-        switch (state) {
-            case NO_GUMS, COIN_INSERTED -> System.out.println("No chewing gum for you!");
-            case NO_COIN -> System.out.println("First pay.");
-            case GUM_SOLD -> {
-                System.out.println("Chewing gum coming...");
-                if (--numberOfGums == 0) {
-                    System.out.println("Run out of gums.");
-                    state = NO_GUMS;
-                } else {
-                    state = NO_COIN;
-                }
-            }
-        }
+    public State getCoinInserted() {
+        return coinInserted;
+    }
+
+    public State getGumSold() {
+        return gumSold;
+    }
+
+    public int getNumberOfGums() {
+        return numberOfGums;
     }
 
     @Override
