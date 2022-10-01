@@ -28,4 +28,9 @@ class NoCoin implements State {
     public void handOver() {
         System.out.println("First pay.");
     }
+
+    @Override
+    public String toString() {
+        return "AWAITING COIN";
+    }
 }

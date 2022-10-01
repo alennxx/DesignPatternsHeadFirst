@@ -33,4 +33,9 @@ class GumSold implements State {
             machine.setState(machine.getNoGums());
         }
     }
+
+    @Override
+    public String toString() {
+        return "GUM SOLD";
+    }
 }

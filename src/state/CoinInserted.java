@@ -1,11 +1,17 @@
 package state;
 
+import java.util.Random;
+
 class CoinInserted implements State {
 
+    private static final int CHANCE_TO_WIN = 10; // 1:10
+
     private final ChewingGumMachine machine;
+    private final Random random;
 
     public CoinInserted(ChewingGumMachine machine) {
         this.machine = machine;
+        random = new Random(System.currentTimeMillis());
     }
 
     @Override
@@ -22,12 +28,22 @@ class CoinInserted implements State {
     @Override
     public void turnTheKnob() {
         System.out.println("Chewing gum purchased.");
-        machine.setState(machine.getGumSold());
+        if (random.nextInt(CHANCE_TO_WIN) == 0) {
+            machine.setState(machine.getGumWon());
+        } else {
+            machine.setState(machine.getGumSold());
+        }
+
     }
 
     @Override
     public void handOver() {
         System.out.println("No chewing gum for you!");
+    }
+
+    @Override
+    public String toString() {
+        return "COIN INSERTED";
     }
 
 }

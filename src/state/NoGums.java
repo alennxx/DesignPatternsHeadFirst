@@ -28,4 +28,8 @@ class NoGums implements State {
         System.out.println("No chewing gum for you!");
     }
 
+    @Override
+    public String toString() {
+        return "EMPTY";
+    }
 }

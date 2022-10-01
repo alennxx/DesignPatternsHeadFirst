@@ -6,6 +6,7 @@ public class ChewingGumMachine {
     private final State noCoin;
     private final State coinInserted;
     private final State gumSold;
+    private final State gumWon;
 
     private State state;
     private int numberOfGums;
@@ -16,11 +17,8 @@ public class ChewingGumMachine {
         noCoin = new NoCoin(this);
         coinInserted = new CoinInserted(this);
         gumSold = new GumSold(this);
-        if (numberOfGums > 0) {
-            state = noCoin;
-        } else {
-            state = noGums;
-        }
+        gumWon = new GumWon(this);
+        setState();
     }
 
     public void setState(State state) {
@@ -47,6 +45,11 @@ public class ChewingGumMachine {
         }
     }
 
+    void fill(int numberOfGums) {
+        this.numberOfGums += numberOfGums;
+        setState();
+    }
+
     public State getNoGums() {
         return noGums;
     }
@@ -63,21 +66,25 @@ public class ChewingGumMachine {
         return gumSold;
     }
 
+    public State getGumWon() {
+        return gumWon;
+    }
+
     public int getNumberOfGums() {
         return numberOfGums;
     }
 
     @Override
     public String toString() {
-        String p1 = "Chewing Gum Machine (" + numberOfGums + " gums left ---- ";
-        String p2 = switch (state) {
-            case NO_GUMS -> "EMPTY";
-            case NO_COIN -> "AWAITING COIN";
-            case COIN_INSERTED -> "COIN INSERTED";
-            case GUM_SOLD -> "GUM SOLD";
-            default -> "UNKNOWN";
-        };
-        return p1 + p2 + ")";
+        return "Chewing Gum Machine (" + numberOfGums + " gums left ---- " + state.toString() + ")";
+    }
+
+    private void setState() {
+        if (numberOfGums > 0) {
+            state = noCoin;
+        } else {
+            state = noGums;
+        }
     }
 
 }
