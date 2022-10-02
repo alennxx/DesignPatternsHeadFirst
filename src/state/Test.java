@@ -5,7 +5,6 @@ public class Test {
     public static void main(String[] args) {
         //testDummyMachine();
         testMachine();
-        //447
     }
 
     private static void testMachine() {
