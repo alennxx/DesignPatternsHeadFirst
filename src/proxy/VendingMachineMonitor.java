@@ -1,17 +1,23 @@
 package proxy;
 
+import java.rmi.RemoteException;
+
 public class VendingMachineMonitor {
 
-    private final VendingMachine vendingMachine;
+    private final RemoteVendingMachine vendingMachine;
 
-    public VendingMachineMonitor(VendingMachine vendingMachine) {
+    public VendingMachineMonitor(RemoteVendingMachine vendingMachine) {
         this.vendingMachine = vendingMachine;
     }
 
     public void report() {
-        System.out.println("Vending Machine: " + vendingMachine.getLocation());
-        System.out.println("Items: " + vendingMachine.getNumberOfItems() + " pcs");
-        System.out.println();
+        try {
+            System.out.println("Vending Machine: " + vendingMachine.getLocation());
+            System.out.println("Items: " + vendingMachine.getNumberOfItems() + " pcs");
+            System.out.println();
+        } catch (RemoteException exception) {
+            exception.printStackTrace();
+        }
     }
 
 }
