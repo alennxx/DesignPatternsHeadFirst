@@ -1,4 +1,4 @@
-package proxy;
+package proxy.remote;
 
 import java.rmi.Naming;
 
@@ -12,8 +12,6 @@ public class Test {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        //480
     }
 
 }
