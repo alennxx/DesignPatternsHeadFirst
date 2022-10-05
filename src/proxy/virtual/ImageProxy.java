@@ -55,6 +55,4 @@ public class ImageProxy implements Icon {
         return Optional.ofNullable(imageIcon).map(attributeGetter).orElse(defaultValue);
     }
 
-    //497
-
 }
