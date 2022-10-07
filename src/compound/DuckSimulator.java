@@ -1,29 +1,45 @@
 package compound;
 
+import java.util.stream.IntStream;
+
 public class DuckSimulator {
 
     public static void main(String[] args) {
         DuckSimulator simulator = new DuckSimulator();
-        simulator.launch();
+        AbstractDuckFactory duckFactory = new DuckFactoryWithCounter();
+        simulator.launch(duckFactory);
     }
 
-    void launch() {
-        Quacking wild = new QuackCounter(new WildDuck()); //QuackCounter = decorator pattern
-        Quacking shoveler = new QuackCounter(new ShovelerDuck());
-        Quacking decoy = new QuackCounter(new DecoyDuck());
-        Quacking rubber = new QuackCounter(new RubberDuck());
-        Quacking gooseDuck = new GooseAdapter(new Goose()); //GooseAdapter = adapter pattern
+    void launch(AbstractDuckFactory duckFactory) {
+        Flock wildDuckFlock = createFlockOfWildDucks(duckFactory, 4);
+        Flock duckFlock = createFlockOfDucks(duckFactory);
+        duckFlock.add(wildDuckFlock); //composite pattern
 
-        System.out.println("Duck Simulator");
+        System.out.println("Duck Simulator\n");
 
-        activate(wild);
-        activate(shoveler);
-        activate(decoy);
-        activate(rubber);
-        activate(gooseDuck);
+        System.out.println("Whole flock:");
+        activate(duckFlock);
+
+        System.out.println("\nFlock of wild ducks:");
+        activate(wildDuckFlock);
 
         System.out.println("\nNumber of quacks: " + QuackCounter.getNumberOfQuacks());
-        //525
+        //536
+    }
+
+    private Flock createFlockOfDucks(AbstractDuckFactory duckFactory) {
+        Flock flock = new Flock();
+        flock.add(duckFactory.createShovelerDuck()); //factory pattern
+        flock.add(duckFactory.createDecoyDuck());
+        flock.add(duckFactory.createRubberDuck());
+        flock.add(new GooseAdapter(new Goose())); //adapter pattern
+        return flock;
+    }
+
+    private Flock createFlockOfWildDucks(AbstractDuckFactory duckFactory, int numberOfDucks) {
+        Flock flock = new Flock();
+        IntStream.range(0, numberOfDucks).mapToObj(i -> duckFactory.createWildDuck()).forEach(flock::add);
+        return flock;
     }
 
     void activate(Quacking duck) {
