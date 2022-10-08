@@ -24,4 +24,8 @@ public class ShovelerDuck implements Quacking {
         observable.notifyObservers();
     }
 
+    @Override
+    public String toString() {
+        return "Shoveler Duck";
+    }
 }

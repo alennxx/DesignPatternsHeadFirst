@@ -15,4 +15,15 @@ public class Flock implements Quacking {
     public void quack() {
         birds.forEach(Quacking::quack);
     }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        birds.forEach(bird -> bird.registerObserver(observer));
+    }
+
+    @Override
+    public void notifyObservers() {
+        birds.forEach(Quacking::notifyObservers);
+    }
+
 }

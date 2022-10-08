@@ -1,9 +1,7 @@
 package compound;
 
-public class Observer {
+public interface Observer {
 
-    public void update(QuackObservable quack) {
-
-    }
+    void update(QuackObservable quack);
 
 }

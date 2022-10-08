@@ -17,14 +17,17 @@ public class DuckSimulator {
 
         System.out.println("Duck Simulator\n");
 
+        Quacologist quacologist = new Quacologist();
+        duckFlock.registerObserver(quacologist);
+
         System.out.println("Whole flock:");
         activate(duckFlock);
 
-        System.out.println("\nFlock of wild ducks:");
-        activate(wildDuckFlock);
+//        System.out.println("\nFlock of wild ducks:");
+//        activate(wildDuckFlock);
 
         System.out.println("\nNumber of quacks: " + QuackCounter.getNumberOfQuacks());
-        //536
+        //544
     }
 
     private Flock createFlockOfDucks(AbstractDuckFactory duckFactory) {

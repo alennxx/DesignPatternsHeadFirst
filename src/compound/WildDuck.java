@@ -24,4 +24,8 @@ public class WildDuck implements Quacking {
         observable.notifyObservers();
     }
 
+    @Override
+    public String toString() {
+        return "Wild Duck";
+    }
 }
