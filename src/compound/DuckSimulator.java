@@ -27,7 +27,6 @@ public class DuckSimulator {
 //        activate(wildDuckFlock);
 
         System.out.println("\nNumber of quacks: " + QuackCounter.getNumberOfQuacks());
-        //544
     }
 
     private Flock createFlockOfDucks(AbstractDuckFactory duckFactory) {
