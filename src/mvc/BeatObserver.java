@@ -1,4 +1,7 @@
 package mvc;
 
-public class BeatObserver {
+public interface BeatObserver {
+
+    void updateBeat();
+
 }

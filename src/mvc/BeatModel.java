@@ -15,6 +15,9 @@ public interface BeatModel {
     void registerObserver(BeatObserver beatObserver);
 
     void removeObserver(BeatObserver beatObserver);
-    //555
+
+    void registerObserver(BPMObserver bpmObserver);
+
+    void removeObserver(BPMObserver bpmObserver);
 
 }
